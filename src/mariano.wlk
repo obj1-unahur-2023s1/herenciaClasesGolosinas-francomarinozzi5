@@ -2,8 +2,8 @@ import golosinas.*
 
 object mariano {
 	var golosinas = []
-	 
 	method comprar(_golosina) { golosinas.add(_golosina) }
+	 
 	
 	method desechar (_golosina) { golosinas.remove(_golosina) }
 	
@@ -62,6 +62,11 @@ object mariano {
 	
 	method tieneGolosinaDeSabor(_sabor) {
 		return golosinas.any({_golosina => _golosina.sabor() == _sabor})
+	}
+	
+	method baniar(unaGolosina){
+		const nuevaGolosina = new GolosinaBaniada(golosinaInterior = unaGolosina)
+		self.comprar(nuevaGolosina)
 	}
 }
 
