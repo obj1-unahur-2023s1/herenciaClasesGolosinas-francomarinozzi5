@@ -6,13 +6,18 @@ object chocolate { }
 object vainilla { }
 object naranja { }
 object limon { }
-
+ 
 
 /*
  * Golosinas
  */
-class Bombon {
+ 
+class Golosinas{
 	var peso = 15
+}
+
+class Bombon inherits Golosinas{
+	method initialize() {peso = 15}
 	
 	method precio() { return 5 }
 	method peso() { return peso }
@@ -32,13 +37,14 @@ class Alfajor {
 	method libreGluten() { return false }
 }
 
+
+
 class Caramelo {
 	var peso = 5
-
+	var property sabor = frutilla 
 	method precio() { return 12 }
 	method peso() { return peso }
 	method mordisco() { peso = peso - 1 }
-	method sabor() { return frutilla }
 	method libreGluten() { return true }
 }
 
@@ -120,3 +126,19 @@ class Tuttifrutti {
 	method libreGluten() { return libreDeGluten }	
 	method libreGluten(valor) { libreDeGluten = valor }
 }
+
+class bombonDuro inherits Bombon{
+	override method mordisco(){ peso -= 1}
+	method dureza() = 
+		if (self.peso() > 12) {3} 
+		else if (self.peso().between(8,12)) {2} 
+		else {1}
+}
+
+class CarameloCorazon inherits Caramelo{
+	override method mordisco() { 
+		peso = peso - 1
+		sabor(chocolate)
+	}		
+}
+
